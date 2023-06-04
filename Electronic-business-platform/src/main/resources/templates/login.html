@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <title>My first Page by thymeleaf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+	<form id="uform">
+		<div>登入帳號</div>
+		<div>直接輸入您的帳號密碼登入</div>
+		<div>帳號<input type="text" id="accountid" value="oper"></div>
+		<div>密碼<input type="password" id="password" value="1234"></div>
+		<div><input type="button" value="登入" onclick="login()"></div>
+	</form>
+	<script src="/scripts/jquery-3.6.1.min.js"></script>
+	<script src="/scripts/bootstrap.min.js"></script>
+	<script>
+		function login(){
+			console.log("123");
+			//document.getElementById("uform").submit();
+			console.log({"accountid":$("#accountid").val(),"password":$("#password").val()});
+			$.ajax({
+				type:"POST",
+				url:"/login",
+				dataType: "json",
+				contentType: 'application/json',
+				data: JSON.stringify({"accountid":$("#accountid").val(),"password":$("#password").val()}),
+				success:function(response){
+					console.log("response"+JSON.stringify(response));
+					var success=response['success'];
+					if(success){
+						alert("登入成功");
+						window.location.reload();
+					}else{
+						alert("登入失敗");
+					}
+				},
+				error: function(thrownError){
+					console.log(thrownError);
+				}
+			});
+		}
+	</script>
+		
+</body>
+</html>
