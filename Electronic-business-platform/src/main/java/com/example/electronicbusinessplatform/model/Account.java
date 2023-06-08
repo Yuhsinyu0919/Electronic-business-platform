@@ -5,7 +5,7 @@ import java.util.Date;
 public class Account {
 	private String accountid;
 	private String password;
-	private String salt;
+	private String role;
 	private String status;
 	private Integer errorcount;
 	private Date createtime;
@@ -23,11 +23,12 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getSalt() {
-		return salt;
+	
+	public String getRole() {
+		return role;
 	}
-	public void setSalt(String salt) {
-		this.salt = salt;
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getStatus() {
 		return status;

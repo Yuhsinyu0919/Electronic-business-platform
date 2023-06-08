@@ -4,7 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.electronicbusinessplatform.model.User;
 
 @Controller
 public class IndexController {
@@ -20,5 +23,14 @@ public class IndexController {
 		}
 		
 		
+	}
+	
+	//@RequestMapping("/register")
+	@GetMapping("/register")
+	public String register(Model model  ) {
+
+		model.addAttribute("user",new User());
+		
+		return "register";
 	}
 }

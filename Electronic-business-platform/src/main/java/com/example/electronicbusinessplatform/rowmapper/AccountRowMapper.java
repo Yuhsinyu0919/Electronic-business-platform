@@ -15,7 +15,7 @@ public class AccountRowMapper implements RowMapper<Account> {
 		Account account = new Account();
 		account.setAccountid(resultSet.getString("accountid"));
 		account.setPassword(resultSet.getString("password"));
-		account.setSalt(resultSet.getString("salt"));
+		account.setRole(resultSet.getString("role"));
 		account.setStatus(resultSet.getString("status"));
 		account.setErrorcount(resultSet.getInt("errorcount"));
 		account.setCreatetime(resultSet.getTimestamp("createtime"));

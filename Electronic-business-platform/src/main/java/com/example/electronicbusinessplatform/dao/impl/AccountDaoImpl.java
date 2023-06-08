@@ -37,13 +37,12 @@ public class AccountDaoImpl implements AccountDao{
 	
 	@Override
 	public boolean getAccount(String accountid, String password) {
-		String sql = "SELECT accountid, password,salt,status,errorcount,createtime,lastmodifiedtime "
+		String sql = "SELECT accountid, password,role,status,errorcount,createtime,lastmodifiedtime "
 				   + " FROM account where accountid = :accountid AND password = :password";
 		Map<String, Object> map= new HashMap<>();
 		map.put("accountid", accountid);
 		map.put("password", password);
 		List<Account> accountList = namedParameterJdbcTemplate.query(sql, map, new AccountRowMapper());
-System.out.print("46 accountList.size=()"+accountList.size());
 		if(accountList.size() > 0 ) {
 			return true;
 		}else {
@@ -55,13 +54,13 @@ System.out.print("46 accountList.size=()"+accountList.size());
 	@Override
 	public void insertAccount(Account account) {
 		
-		String sql = "INSERT INTO account (accountid,password,salt,status,errorcount,createtime,lastmodifiedtime) "
+		String sql = "INSERT INTO account (accountid,password,role,status,errorcount,createtime,lastmodifiedtime) "
 				+ " VALUES (:accountid,:password,:salt,:status,:errorcount,:createtime,:lastmodifiedtime)";
 	
 		Map<String, Object> map= new HashMap<>();
 		map.put("accountid", account.getAccountid());
 		map.put("password",account.getPassword());
-		map.put("salt",account.getSalt());
+		map.put("role",account.getRole());
 		map.put("status",account.getStatus());
 		map.put("errorcount",account.getErrorcount());	
 		Date date = new Date();

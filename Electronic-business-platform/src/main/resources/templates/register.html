@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <title>新增管理者</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form th:action="@{/register}" th:object="${user}" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" th:field="*{username}" required/>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" th:field="*{password}" required/>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+	<!--<form th:action="${/register}" th:object="${user}" method="POST">
+		<div><input type="text" th:field="*{username}" />帳號</div>
+		<div><input type="password" th:field="*{password}" />密碼</div>
+		<div><input type="submit" >註冊</div>
+	</form>-->
+	<script src="/scripts/jquery-3.6.1.min.js"></script>
+	<script src="/scripts/bootstrap.min.js"></script>
+	<script>
+
+	</script>
+		
+</body>
+</html>
